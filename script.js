@@ -58,11 +58,14 @@ function showFullscreen(imgElement) {
     date.textContent = dt ? formatDate(dt) : '';
 
     full.style.display = 'flex';
+
+    document.getElementById("sidebar-toggle").style.display = 'none';
 }
 
 function hideFullscreen() {
     const full = document.getElementById('fullscreen');
     full.style.display = 'none';
+    document.getElementById("sidebar-toggle").style.display = 'flex';
 }
 
 document.getElementById('fullscreen-close').onclick = hideFullscreen;
