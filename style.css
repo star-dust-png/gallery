@@ -118,11 +118,12 @@ h2 {
     color: white;
     padding: 10px 16px;
     border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
+    text-decoration: underline;
+    font-weight: 400;
     box-shadow: 0 3px 6px rgba(0,0,0,0.3);
     user-select: none;
     transition: background-color 0.3s ease;
+    font-family: "Google Sans Code", 'Georgia', serif;
 }
 
 #download-btn:hover {
