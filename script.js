@@ -87,4 +87,34 @@ function formatDate(dateStr) {
     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
 
+const sidebar = document.getElementById('sidebar');
+const toggleBtn = document.getElementById('sidebar-toggle');
+
+toggleBtn.onclick = () => {
+    sidebar.classList.add('open');
+};
+
+const closeBtn = document.createElement('div');
+closeBtn.id = 'sidebar-close';
+closeBtn.textContent = '×';
+sidebar.appendChild(closeBtn);
+
+closeBtn.onclick = () => {
+    sidebar.classList.remove('open');
+};
+
+sidebar.addEventListener('click', e => {
+    if (e.target.tagName === 'DIV' && e.target !== closeBtn) {
+        const index = Array.from(sidebar.children).indexOf(e.target);
+        const section = document.getElementById(`section-${index}`);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        if (window.matchMedia("(max-width: 600px)").matches) {
+            sidebar.classList.remove('open');
+        }
+    }
+});
+
 loadGallery()
