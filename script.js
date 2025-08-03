@@ -27,12 +27,13 @@ async function loadGallery() {
         const grid = document.createElement('div');
         grid.className = 'photo-grid';
 
-        files.forEach(({filename, dateTaken}) => {
+        files.forEach(({filename, previewPath, dateTaken}) => {
             const img = document.createElement('img');
-            img.src = `photos/${folder}/${filename}`;
+            img.src = `photos/${previewPath}`;
             img.alt = filename;
             img.title = filename;
             img.dataset.dateTaken = dateTaken;
+            img.dataset.fullsrc = `photos/${folder}/${filename}`;
             img.onclick = () => showFullscreen(img);
             grid.appendChild(img);
         });
@@ -49,7 +50,7 @@ function showFullscreen(imgElement) {
     const date = document.getElementById('photo-date');
     const download = document.getElementById('download-btn');
 
-    img.src = imgElement.src;
+    img.src = imgElement.dataset.fullsrc;
     name.textContent = imgElement.alt || '';
     download.href = imgElement.src;
     download.download = imgElement.alt || '';
