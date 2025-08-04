@@ -52,7 +52,7 @@ function showFullscreen(imgElement) {
 
     img.src = imgElement.dataset.fullsrc;
     name.textContent = imgElement.alt || '';
-    download.href = imgElement.src;
+    download.href = imgElement.dataset.fullsrc;
     download.download = imgElement.alt || '';
 
     const dt = imgElement.dataset.dateTaken;
