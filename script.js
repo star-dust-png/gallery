@@ -1,9 +1,26 @@
-async function loadGallery() {
-    const res = await fetch('index.json');
-    const folders = await res.json();
+const hostUrl = "https://star-dust-png.github.io/";
+const album = new URLSearchParams(window.location.search).get('album');
+
+async function loadGallery(albumRepo) {
+    const res = await fetch(hostUrl + albumRepo + '/index.json');
 
     const sidebar = document.getElementById('sidebar');
     const gallery = document.getElementById('gallery-container');
+
+    if (!res.ok) {
+        const section = document.createElement('section');
+        section.id = `section-0`;
+
+        const title = document.createElement('h2');
+        title.textContent = `Failed to load album: ${res.status} ${res.statusText}`;
+        section.appendChild(title);
+
+        gallery.appendChild(section);
+
+        return;
+    }
+
+    const folders = await res.json();
 
     sidebar.innerHTML = '';
     gallery.innerHTML = '';
@@ -121,4 +138,4 @@ sidebar.addEventListener('click', e => {
     }
 });
 
-loadGallery()
+loadGallery(album);
