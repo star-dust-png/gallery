@@ -1,4 +1,4 @@
-const hostUrl = "https://star-dust-png.github.io/";
+const hostUrl = "https://stardustpng-albums.github.io/";
 const album = new URLSearchParams(window.location.search).get('album');
 
 async function loadGallery(albumRepo) {
