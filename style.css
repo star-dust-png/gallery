@@ -228,3 +228,7 @@ h2 {
     cursor: pointer;
     user-select: none;
 }
+
+.arrow {
+    color: #f2d8b8;
+}
