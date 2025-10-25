@@ -46,11 +46,11 @@ async function loadGallery(albumRepo) {
 
         files.forEach(({filename, previewPath, dateTaken}) => {
             const img = document.createElement('img');
-            img.src = hostUrl + album + `photos/${previewPath}`;
+            img.src = hostUrl + album + `/photos/${previewPath}`;
             img.alt = filename;
             img.title = filename;
             img.dataset.dateTaken = dateTaken;
-            img.dataset.fullsrc = hostUrl + album + `photos/${folder}/${filename}`;
+            img.dataset.fullsrc = hostUrl + album + `/photos/${folder}/${filename}`;
             img.onclick = () => showFullscreen(img);
             grid.appendChild(img);
         });
