@@ -212,6 +212,10 @@ h2 {
         box-sizing: border-box;
         flex-direction: column;
     }
+
+    #sidebar-close {
+        display: block !important ;
+    }
 }
 
 #sidebar.open {
@@ -219,6 +223,7 @@ h2 {
 }
 
 #sidebar-close {
+    display: none;
     position: absolute;
     top: 12px;
     right: 20px;
