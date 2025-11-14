@@ -1,5 +1,6 @@
 const hostUrl = "https://stardustpng-albums.github.io/";
 const album = new URLSearchParams(window.location.search).get('album');
+const sectionParam = new URLSearchParams(window.location.search).get('section');
 
 let currentImageIndex = -1;
 let allImages = [];
@@ -37,6 +38,7 @@ async function loadGallery(albumRepo) {
 
         const section = document.createElement('section');
         section.id = `section-${index}`;
+        section.classList.add(normalizeDateClass(folder));
 
         const title = document.createElement('h2');
         title.textContent = folder;
@@ -60,6 +62,11 @@ async function loadGallery(albumRepo) {
         section.appendChild(grid);
         gallery.appendChild(section);
     });
+
+    if (sectionParam) {
+        let section = document.querySelector(`.${normalizeDateClass(sectionParam)}`);
+        if (section) section.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 function showFullscreen(imgElement) {
@@ -174,6 +181,13 @@ function formatDate(dateStr) {
     const seconds = pad(d.getSeconds());
 
     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+}
+
+function normalizeDateClass(str) {
+    return "d_" + str
+        .trim()
+        .replace(/\s+/g, "_")
+        .replace(/[^A-Za-z0-9_]/g, "");
 }
 
 const sidebar = document.getElementById('sidebar');
