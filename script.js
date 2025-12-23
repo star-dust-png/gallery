@@ -53,6 +53,7 @@ async function loadGallery(albumRepo) {
             img.alt = filename;
             img.title = filename;
             img.dataset.dateTaken = dateTaken;
+            img.dataset.previewSrc = hostUrl + album + `/photos/${previewPath}`;
             img.dataset.fullsrc = hostUrl + album + `/photos/${folder}/${filename}`;
             img.onclick = () => showFullscreen(img);
             grid.appendChild(img);
@@ -78,6 +79,7 @@ function showFullscreen(imgElement) {
 
     currentImageIndex = allImages.indexOf(imgElement);
 
+    img.src = imgElement.dataset.previewSrc;
     img.src = imgElement.dataset.fullsrc;
     name.textContent = imgElement.alt || '';
     download.href = imgElement.dataset.fullsrc;
